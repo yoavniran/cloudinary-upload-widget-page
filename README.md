@@ -1,0 +1,1 @@
+https://cloudinary-upload.netlify.com/
