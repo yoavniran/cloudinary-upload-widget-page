@@ -27,7 +27,7 @@ limitations under the License.
 		// See "Project number" under "IAM & Admin" > "Settings"
 		var appId = "1234567890";
 		// Scope to use to access user's Drive items.
-		var scope = ['https://www.googleapis.com/auth/drive.file'];
+		var scope = ['https://www.googleapis.com/auth/drive.readonly'];
 		var pickerApiLoaded = false;
 		var oauthToken;
 		// Use the Google API Loader script to load the google.picker script.
@@ -60,7 +60,7 @@ limitations under the License.
 				var view = new google.picker.View(google.picker.ViewId.DOCS);
 				view.setMimeTypes("image/png,image/jpeg,image/jpg");
 				var picker = new google.picker.PickerBuilder()
-					.enableFeature(google.picker.Feature.NAV_HIDDEN)
+					//.enableFeature(google.picker.Feature.NAV_HIDDEN)
 					.enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
 					.setAppId(appId)
 					.setOAuthToken(oauthToken)
