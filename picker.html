@@ -25,17 +25,19 @@ limitations under the License.
 		var clientId = "124980147196-6pln31lupl374tjgg6ubg1jdohh37reg.apps.googleusercontent.com"
 		// Replace with your own project number from console.developers.google.com.
 		// See "Project number" under "IAM & Admin" > "Settings"
-		var appId = "1234567890";
+		var appId = "124980147196";
 		// Scope to use to access user's Drive items.
 		var scope = ['https://www.googleapis.com/auth/drive.readonly'];
 		var pickerApiLoaded = false;
-		var oauthToken;
+		var oauthToken = localStorage.getItem("picker-token");
 		// Use the Google API Loader script to load the google.picker script.
 		function loadPicker() {
 			gapi.load('auth', {'callback': onAuthApiLoad});
 			gapi.load('picker', {'callback': onPickerApiLoad});
 		}
 		function onAuthApiLoad() {
+			
+			if (!oauthToken){
 			window.gapi.auth.authorize(
 				{
 					'client_id': clientId,
@@ -43,6 +45,10 @@ limitations under the License.
 					'immediate': false
 				},
 				handleAuthResult);
+			}
+			else{
+				createPicker();
+			}
 		}
 		function onPickerApiLoad() {
 			pickerApiLoaded = true;
@@ -51,6 +57,7 @@ limitations under the License.
 		function handleAuthResult(authResult) {
 			if (authResult && !authResult.error) {
 				oauthToken = authResult.access_token;
+				localStorage.setItem("picker-token", oauthToken);
 				createPicker();
 			}
 		}
