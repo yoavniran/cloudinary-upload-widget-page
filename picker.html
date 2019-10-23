@@ -72,8 +72,9 @@ limitations under the License.
 				var viewDocs = new google.picker.View(google.picker.ViewId.DOCS);
 				const picker = google.picker;
 
-				const viewGroup = new picker.ViewGroup(view);
-				viewGroup.addView(viewDocs);
+				const viewGroup = new picker.ViewGroup(view)
+                    .addView(viewDocs)
+                    .addLabel("TEST");
 
 				//view.setMimeTypes("image/png,image/jpeg,image/jpg");
 				const instance = new picker.PickerBuilder()
@@ -84,7 +85,8 @@ limitations under the License.
 					.setAppId(appId)
 					.setOAuthToken(oauthToken)
 					.addViewGroup(viewGroup)
-					.setTitle("")
+                    .addView(picker.ViewId.RECENTLY_PICKED)
+                    .setTitle("")
 					// .addView(view)
 					// .addView(viewDocs)
 					//.addView(new google.picker.DocsUploadView())
