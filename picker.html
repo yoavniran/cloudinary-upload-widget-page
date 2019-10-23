@@ -69,10 +69,11 @@ limitations under the License.
 		function createPicker() {
 			if (pickerApiLoaded && oauthToken) {
 				const view = new google.picker.View(google.picker.ViewId.FOLDERS);
-				// var viewDocs = new google.picker.View(google.picker.ViewId.DOCS);
+				var viewDocs = new google.picker.View(google.picker.ViewId.DOCS);
 				const picker = google.picker;
 
 				const viewGroup = new picker.ViewGroup(view);
+				viewGroup.addView(viewDocs);
 
 				//view.setMimeTypes("image/png,image/jpeg,image/jpg");
 				const instance = new picker.PickerBuilder()
