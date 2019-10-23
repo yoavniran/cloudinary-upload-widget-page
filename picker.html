@@ -68,7 +68,7 @@ limitations under the License.
 		// Create and render a Picker object for searching images.
 		function createPicker() {
 			if (pickerApiLoaded && oauthToken) {
-				// var view = new google.picker.View(google.picker.ViewId.FOLDERS);
+				const view = new google.picker.View(google.picker.ViewId.FOLDERS);
 				// var viewDocs = new google.picker.View(google.picker.ViewId.DOCS);
 				const picker = google.picker;
 
